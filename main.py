@@ -37,7 +37,8 @@ async def movie_name(update: Update, context: ContextTypes.DEFAULT_TYPE):
 if __name__ == "__main__":
     token = "6064726044:AAH7J1KZPl10qRwU6iWSpkafFqSmTtpJ5bw"
     url = "https://filthy-getup-clam.cyclic.app"
-    updater = Updater(token, use_context=True)
+    
+    updater = Updater(token)
 
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
