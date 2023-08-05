@@ -54,4 +54,3 @@ if __name__ == "__main__":
                             port=8443,
                             url_path=token,
                             webhook_url=f"{url}/{token}")
-    application.run_polling()
