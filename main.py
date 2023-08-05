@@ -1,3 +1,4 @@
+from queue import Queue
 import logging
 from telegram import Update
 from telegram.ext import Updater, filters, MessageHandler, ApplicationBuilder, ContextTypes, CommandHandler
@@ -38,7 +39,7 @@ if __name__ == "__main__":
     token = "6064726044:AAH7J1KZPl10qRwU6iWSpkafFqSmTtpJ5bw"
     url = "https://filthy-getup-clam.cyclic.app"
     
-    updater = Updater(token)
+    updater = Updater(token, update_queue=Queue())
 
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
