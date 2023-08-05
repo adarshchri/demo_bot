@@ -1,6 +1,6 @@
 import logging
 from telegram import Update
-from telegram.ext import filters, MessageHandler, ApplicationBuilder, ContextTypes, CommandHandler
+from telegram.ext import Updater, filters, MessageHandler, ApplicationBuilder, ContextTypes, CommandHandler
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
@@ -37,7 +37,10 @@ async def movie_name(update: Update, context: ContextTypes.DEFAULT_TYPE):
 if __name__ == "__main__":
     token = "6064726044:AAH7J1KZPl10qRwU6iWSpkafFqSmTtpJ5bw"
     url = "https://filthy-getup-clam.cyclic.app"
-    application = ApplicationBuilder().token(token).build()
+    updater = Updater(token, use_context=True)
+
+    # Get the dispatcher to register handlers
+    dp = updater.dispatcher
 
     # Defining handler
     start_handler = CommandHandler("start", start)
@@ -46,11 +49,13 @@ if __name__ == "__main__":
     argument_handler = CommandHandler('argument', argument_command)
 
     # Adding Handler
-    application.add_handler(start_handler)
-    application.add_handler(echo_handler)
-    application.add_handler(caps_handler)
-    application.add_handler(argument_handler)
-    application.run_webhook(listen="0.0.0.0",
+    dp.add_handler(start_handler)
+    dp.add_handler(echo_handler)
+    dp.add_handler(caps_handler)
+    dp.add_handler(argument_handler)
+    updater.run_webhook(listen="0.0.0.0",
                             port=8443,
                             url_path=token,
                             webhook_url=f"{url}/{token}")
+    
+    updater.idle()
