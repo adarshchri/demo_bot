@@ -36,7 +36,7 @@ async def movie_name(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 if __name__ == "__main__":
     token = "6064726044:AAH7J1KZPl10qRwU6iWSpkafFqSmTtpJ5bw"
-    url = ""
+    url = "https://filthy-getup-clam.cyclic.app"
     application = ApplicationBuilder().token(token).build()
 
     # Defining handler
